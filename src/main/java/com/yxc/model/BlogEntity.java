@@ -1,7 +1,8 @@
 package com.yxc.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+//import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by tm on 16/9/6.
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
 public class BlogEntity {
     private int id;
     private String content;
-    private Timestamp pubDate;
+    private Date pubDate;
     private String title;
     private UserEntity userByUserId;
 
@@ -37,11 +38,11 @@ public class BlogEntity {
 
     @Basic
     @Column(name = "pub_date")
-    public Timestamp getPubDate() {
+    public Date getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Timestamp pubDate) {
+    public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
     }
 
