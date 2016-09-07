@@ -1,0 +1,74 @@
+<dataSource name="defaultPersistenceUnit/Hibernate">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="springdemo">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="info" />
+    <schema id="3" name="information_schema" />
+    <schema id="4" name="mysql" />
+    <schema id="5" name="orcl" />
+    <schema id="6" name="performance_schema" />
+    <schema id="7" name="Student" />
+    <schema id="8" name="Sudent" />
+    <schema id="9" name="WordPress" />
+    <table id="10" parent="1" name="blog" />
+    <table id="11" parent="1" name="user" />
+    <column id="12" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="13" parent="10" name="title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="14" parent="10" name="content">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="15" parent="10" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="16" parent="10" name="pub_date">
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <index id="17" parent="10" name="user_id_idx">
+      <columns>user_id</columns>
+      <desc-columns />
+    </index>
+    <key id="18" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="19" parent="10" name="user_id">
+      <columns>user_id</columns>
+      <ref-key>~.user.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="20" parent="11" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="21" parent="11" name="nickname">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="22" parent="11" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="23" parent="11" name="first_name">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="24" parent="11" name="last_name">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <key id="25" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

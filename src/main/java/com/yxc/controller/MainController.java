@@ -6,6 +6,7 @@ import com.yxc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
@@ -29,4 +30,16 @@ public class MainController {
         modelMap.addAttribute("userList",userList);
         return "admin/users";
     }
+
+    @RequestMapping(value = "/admin/users/add",method = RequestMethod.GET)
+    public String addUser() {
+        return "admin/addUser";
+    }
+
+    @RequestMapping(value = "/admin/users/addP",method = RequestMethod.POST)
+    public String addUserPost(@ModelAttribute("user") UserEntity userEntity) {
+        userRepository.saveAndFlush(userEntity);
+        return "redirect:/admin/users";
+    }
+
 }
