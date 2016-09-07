@@ -9,10 +9,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +41,14 @@ public class BlogController {
         // 向jsp注入用户列表
         modelMap.addAttribute("userList", userList);
         return "admin/addBlog";
+    }
+
+    // 查看博文详情，默认使用GET方法时，method可以缺省
+    @RequestMapping("/admin/blogs/show/{id}")
+    public String showBlog(@PathVariable("id") int id, ModelMap modelMap) {
+        BlogEntity blog = blogRepository.findOne(id);
+        modelMap.addAttribute("blog", blog);
+        return "admin/blogDetail";
     }
 
     @InitBinder
