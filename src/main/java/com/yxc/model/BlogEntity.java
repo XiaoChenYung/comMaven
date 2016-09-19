@@ -1,5 +1,7 @@
 package com.yxc.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 //import java.sql.Timestamp;
 import java.util.Date;
@@ -14,6 +16,7 @@ public class BlogEntity {
     private String content;
     private Date pubDate;
     private String title;
+    @JsonIgnore
     private UserEntity userByUserId;
 
     @Id
@@ -81,6 +84,7 @@ public class BlogEntity {
     }
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     public UserEntity getUserByUserId() {
         return userByUserId;

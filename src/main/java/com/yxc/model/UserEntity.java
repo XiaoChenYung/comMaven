@@ -16,7 +16,7 @@ public class UserEntity {
     private String lastName;
     private String nickname;
     private String password;
-    @JsonIgnore
+//    @JsonIgnore
     private Collection<BlogEntity> blogsById;
 
     @Id
@@ -98,7 +98,7 @@ public class UserEntity {
     @OneToMany(mappedBy = "userByUserId",targetEntity = BlogEntity.class,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
              fetch=FetchType.EAGER)
-    @JsonIgnore
+//    @JsonIgnore
     public Collection<BlogEntity> getBlogsById() {
         return blogsById;
     }
