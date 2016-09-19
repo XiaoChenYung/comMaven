@@ -34,7 +34,11 @@ public class MainController {
     public void getUsers(ModelMap modelMap,HttpServletResponse response)  throws ParseException, IOException{
         List<UserEntity> userList = userRepository.findAll();
         modelMap.addAttribute("userList",userList);
-        System.out.println(userList);
+
+        UserEntity temp = userList.get(0);
+
+
+        System.out.println(temp.getBlogsById());
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(userList);
 //        System.out.println(json);

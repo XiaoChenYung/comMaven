@@ -92,7 +92,7 @@ public class UserEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "userByUserId",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "userByUserId")
     public Collection<BlogEntity> getBlogsById() {
         return blogsById;
     }
