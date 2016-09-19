@@ -34,19 +34,19 @@ public class BlogController {
     @RequestMapping(value = "/admin/blogs",method = RequestMethod.GET)
     public void showBlogs(ModelMap modelMap,HttpServletResponse response) throws ParseException, IOException{
 
-        User user = new User();
-        user.setName("小敏");
-        user.setEmail("afdsd");
-        user.setAge(20);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        user.setBirthday(dateFormat.parse("1996-10-01"));
+//        User user = new User();
+//        user.setName("小敏");
+//        user.setEmail("afdsd");
+//        user.setAge(20);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        user.setBirthday(dateFormat.parse("1996-10-01"));
 
         List<BlogEntity> blogList = blogRepository.findAll();
         modelMap.addAttribute("blogList",blogList);
 
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(user);
-//        System.out.println(json);
+        String json = mapper.writeValueAsString(blogList);
+        System.out.println(json);
 
         OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
         response.setHeader("content-type", "text/html;charset=UTF-8");
