@@ -1,5 +1,7 @@
 package com.yxc.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -14,6 +16,7 @@ public class UserEntity {
     private String lastName;
     private String nickname;
     private String password;
+    @JsonIgnore
     private Collection<BlogEntity> blogsById;
 
     @Id
@@ -92,7 +95,10 @@ public class UserEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "userByUserId")
+    @OneToMany(mappedBy = "userByUserId",targetEntity = BlogEntity.class,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+             fetch=FetchType.EAGER)
+    @JsonIgnore
     public Collection<BlogEntity> getBlogsById() {
         return blogsById;
     }
