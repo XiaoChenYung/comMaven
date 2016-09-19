@@ -1,6 +1,10 @@
 package com.yxc.controller;
 
+import java.io.OutputStream;
+import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yxc.model.BlogEntity;
+import com.yxc.model.User;
 import com.yxc.model.UserEntity;
 import com.yxc.repository.BlogRepository;
 import com.yxc.repository.UserRepository;
@@ -10,11 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
 /**
  * Created by tm on 16/9/7.
  */
@@ -28,10 +32,27 @@ public class BlogController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/admin/blogs",method = RequestMethod.GET)
-    public String showBlogs(ModelMap modelMap) {
+    public void showBlogs(ModelMap modelMap,HttpServletResponse response) throws ParseException, IOException{
+
+        User user = new User();
+        user.setName("小敏");
+        user.setEmail("afdsd");
+        user.setAge(20);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        user.setBirthday(dateFormat.parse("1996-10-01"));
+
         List<BlogEntity> blogList = blogRepository.findAll();
         modelMap.addAttribute("blogList",blogList);
-        return "admin/blogs";
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(user);
+//        System.out.println(json);
+
+        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
+        outputStream.write(dataByteArr);
+//        return "admin/blogs";
     }
 
     // 添加博文

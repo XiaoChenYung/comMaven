@@ -1,5 +1,7 @@
 package com.yxc.controller;
 
+import java.io.OutputStream;
+import java.io.IOException;
 import com.yxc.model.UserEntity;
 import com.yxc.repository.UserRepository;
 //import org.hibernate.mapping.List;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
 import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Created by tm on 16/9/6.
  */
@@ -26,10 +31,20 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/users",method = RequestMethod.GET)
-    public String getUsers(ModelMap modelMap) {
+    public void getUsers(ModelMap modelMap,HttpServletResponse response)  throws ParseException, IOException{
         List<UserEntity> userList = userRepository.findAll();
         modelMap.addAttribute("userList",userList);
-        return "admin/users";
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(userList);
+//        System.out.println(json);
+
+        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
+        outputStream.write(dataByteArr);
+
+//        return "admin/users";
     }
 
     @RequestMapping(value = "/admin/users/add",method = RequestMethod.GET)

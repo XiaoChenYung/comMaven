@@ -1,18 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="defaultPersistenceUnit/Hibernate">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
     <schema id="1" name="springdemo">
       <visible>1</visible>
     </schema>
-    <schema id="2" name="info" />
-    <schema id="3" name="information_schema" />
-    <schema id="4" name="mysql" />
-    <schema id="5" name="orcl" />
-    <schema id="6" name="performance_schema" />
-    <schema id="7" name="Student" />
-    <schema id="8" name="Sudent" />
-    <schema id="9" name="WordPress" />
-    <table id="10" parent="1" name="blog" />
-    <table id="11" parent="1" name="user" />
+    <schema id="2" name="info"/>
+    <schema id="3" name="information_schema"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="orcl"/>
+    <schema id="6" name="performance_schema"/>
+    <schema id="7" name="Student"/>
+    <schema id="8" name="Sudent"/>
+    <schema id="9" name="WordPress"/>
+    <table id="10" parent="1" name="blog"/>
+    <table id="11" parent="1" name="user"/>
     <column id="12" parent="10" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
@@ -35,7 +36,7 @@
     </column>
     <index id="17" parent="10" name="user_id_idx">
       <columns>user_id</columns>
-      <desc-columns />
+      <desc-columns></desc-columns>
     </index>
     <key id="18" parent="10" name="PRIMARY">
       <columns>id</columns>
