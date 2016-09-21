@@ -32,7 +32,7 @@ public class BlogController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/admin/blogs",method = RequestMethod.GET)
-    public void showBlogs(ModelMap modelMap,HttpServletResponse response) throws ParseException, IOException{
+    public String showBlogs(ModelMap modelMap,HttpServletResponse response) throws ParseException, IOException{
 
 //        User user = new User();
 //        user.setName("小敏");
@@ -44,15 +44,15 @@ public class BlogController {
         List<BlogEntity> blogList = blogRepository.findAll();
         modelMap.addAttribute("blogList",blogList);
 
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(blogList);
-        System.out.println(json);
-
-        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
-        response.setHeader("content-type", "text/html;charset=UTF-8");
-        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
-        outputStream.write(dataByteArr);
-//        return "admin/blogs";
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(blogList);
+//        System.out.println(json);
+//
+//        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
+//        response.setHeader("content-type", "text/html;charset=UTF-8");
+//        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
+//        outputStream.write(dataByteArr);
+        return "admin/blogs";
     }
 
     // 添加博文
