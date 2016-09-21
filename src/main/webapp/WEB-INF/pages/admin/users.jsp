@@ -49,6 +49,7 @@
                 <th>姓名</th>
                 <th>密码</th>
                 <th>操作</th>
+                <th>备注</th>
             </tr>
 
             <c:forEach items="${userList}" var="user">
