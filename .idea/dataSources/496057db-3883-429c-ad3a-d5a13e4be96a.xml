@@ -34,24 +34,48 @@
       <mandatory>1</mandatory>
       <data-type>date|0</data-type>
     </column>
-    <column id="17" parent="11" name="id">
+    <index id="17" parent="10" name="user_id_idx">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="18" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="19" parent="10" name="FKpxk2jtysqn41oop7lvxcp6dqq">
+      <columns>user_id</columns>
+      <ref-key>~.user.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="20" parent="10" name="user_id">
+      <columns>user_id</columns>
+      <ref-key>~.user.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="21" parent="11" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="18" parent="11" name="nickname">
+    <column id="22" parent="11" name="nickname">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="19" parent="11" name="password">
+    <column id="23" parent="11" name="password">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="20" parent="11" name="first_name">
+    <column id="24" parent="11" name="first_name">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="21" parent="11" name="last_name">
+    <column id="25" parent="11" name="last_name">
       <data-type>varchar(45)|0</data-type>
     </column>
+    <key id="26" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
   </database-model>
 </dataSource>

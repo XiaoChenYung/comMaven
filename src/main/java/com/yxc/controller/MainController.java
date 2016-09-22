@@ -30,25 +30,24 @@ public class MainController {
         return "index2";
     }
 
-    @RequestMapping(value = "/admin/users",method = RequestMethod.GET)
-    public String getUsers(ModelMap modelMap,HttpServletResponse response)  throws ParseException, IOException{
+    @RequestMapping(value = "/root/admin/users",method = RequestMethod.GET)
+    public String getUsers(ModelMap modelMap){
         List<UserEntity> userList = userRepository.findAll();
         modelMap.addAttribute("userList",userList);
-
-//        UserEntity temp = userList.get(0);
-//
-//
-//        System.out.println(temp.getBlogsById());
-//        ObjectMapper mapper = new ObjectMapper();
-//        String json = mapper.writeValueAsString(userList);
-//        System.out.println(json);
-
-//        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
-//        response.setHeader("content-type", "text/html;charset=UTF-8");
-//        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
-//        outputStream.write(dataByteArr);
-
         return "admin/users";
+    }
+
+    @RequestMapping(value = "/admin/users",method = RequestMethod.GET)
+    public void appGetUsers(HttpServletResponse response)  throws ParseException, IOException {
+        List<UserEntity> userList = userRepository.findAll();
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(userList);
+        System.out.println(json);
+
+        OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
+        outputStream.write(dataByteArr);
     }
 
     @RequestMapping(value = "/admin/users/add",method = RequestMethod.GET)
