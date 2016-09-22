@@ -2,6 +2,8 @@ package com.yxc.controller;
 
 import java.io.OutputStream;
 import java.io.IOException;
+
+import com.yxc.model.AppTestClass;
 import com.yxc.model.UserEntity;
 import com.yxc.repository.UserRepository;
 //import org.hibernate.mapping.List;
@@ -37,13 +39,17 @@ public class MainController {
         return "admin/users";
     }
 
-    @RequestMapping(value = "/admin/users",method = RequestMethod.GET)
-    public void appGetUsers(HttpServletResponse response)  throws ParseException, IOException {
-        List<UserEntity> userList = userRepository.findAll();
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(userList);
-        System.out.println(json);
+    @RequestMapping(value = "/admin/users",method = RequestMethod.POST)
+    public void appGetUsers(HttpServletResponse response, @ModelAttribute("user") UserEntity userEntity)  throws ParseException, IOException {
 
+//        System.out.println(app.sdf);
+
+//        List<UserEntity> userList = userRepository.findAll();
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(userList);
+//        System.out.println(json);
+        userRepository.saveAndFlush(userEntity);
+        String json = "ok";
         OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
         response.setHeader("content-type", "text/html;charset=UTF-8");
         byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
