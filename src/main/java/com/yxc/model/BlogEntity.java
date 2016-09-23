@@ -14,7 +14,7 @@ import java.util.Date;
 public class BlogEntity {
     private int id;
     private String content;
-    private Date pubDate;
+    private String pubDate;
     private String title;
     @JsonIgnore
     private UserEntity userByUserId;
@@ -41,11 +41,11 @@ public class BlogEntity {
 
     @Basic
     @Column(name = "pub_date")
-    public Date getPubDate() {
+    public String getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Date pubDate) {
+    public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
     }
 

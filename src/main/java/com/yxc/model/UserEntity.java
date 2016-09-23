@@ -16,6 +16,7 @@ public class UserEntity {
     private String lastName;
     private String nickname;
     private String password;
+    private int age;
 //    @JsonIgnore
     private Collection<BlogEntity> blogsById;
 
