@@ -30,7 +30,7 @@
 <div class="container">
     <h1>SpringMVC 添加用户</h1>
     <hr/>
-    <form:form action="/admin/users/addP" method="post" commandName="user" role="form">
+    <form:form action="/root/admin/users/addP" method="post" commandName="user" role="form">
         <div class="form-group">
             <label for="firstName">Nickname:</label>
             <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Nickname:"/>
@@ -46,6 +46,10 @@
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password:"/>
+        </div>
+        <div class="form-group">
+            <label for="password">年龄:</label>
+            <input type="text" class="form-control" id="age" name="age" placeholder="Enter age:"/>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-sm btn-success">提交</button>

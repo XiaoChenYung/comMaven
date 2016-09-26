@@ -49,7 +49,7 @@
                 <th>姓名</th>
                 <th>密码</th>
                 <th>操作</th>
-                <th>备注</th>
+                <th>年龄</th>
             </tr>
 
             <c:forEach items="${userList}" var="user">
@@ -63,6 +63,7 @@
                         <a href="/root/admin/users/update/${user.id}" type="button" class="btn btn-sm btn-warning">修改</a>
                         <a href="/root/admin/users/delete/${user.id}" type="button" class="btn btn-sm btn-danger">删除</a>
                     </td>
+                    <td>${user.age}</td>
                 </tr>
             </c:forEach>
         </table>

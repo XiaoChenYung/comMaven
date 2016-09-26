@@ -70,6 +70,16 @@ public class UserEntity {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "age")
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
