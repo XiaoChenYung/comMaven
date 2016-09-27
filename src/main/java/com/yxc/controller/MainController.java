@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import util.Des;
+
 /**
  * Created by tm on 16/9/6.
  */
@@ -50,6 +52,9 @@ public class MainController {
         List<UserEntity> userList = userRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(userList);
+
+        String mima = Des.encode("asdfasd",json);
+
 //        System.out.println(json);
         userRepository.saveAndFlush(userEntity);
 //        String json = "{ok:ok}";
