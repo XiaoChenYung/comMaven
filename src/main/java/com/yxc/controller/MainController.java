@@ -53,14 +53,14 @@ public class MainController {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(userList);
 
-        String mima = Des.encode("asdfasd",json);
+        String mima = Des.encode("asdfaasfsdfqwfeasdfsd",json);
 
 //        System.out.println(json);
         userRepository.saveAndFlush(userEntity);
 //        String json = "{ok:ok}";
         OutputStream outputStream = response.getOutputStream();//获取OutputStream输出流
         response.setHeader("content-type", "text/html;charset=UTF-8");
-        byte[] dataByteArr = json.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
+        byte[] dataByteArr = mima.getBytes("UTF-8");//将字符转换成字节数组，指定以UTF-8编码进行转换
         outputStream.write(dataByteArr);
     }
 
