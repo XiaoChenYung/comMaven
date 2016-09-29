@@ -32,7 +32,7 @@
     </column>
     <column id="16" parent="10" name="pub_date">
       <mandatory>1</mandatory>
-      <data-type>date|0</data-type>
+      <data-type>varchar(50)|0</data-type>
     </column>
     <index id="17" parent="10" name="user_id_idx">
       <columns>user_id</columns>
@@ -73,7 +73,10 @@
     <column id="25" parent="11" name="last_name">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <key id="26" parent="11" name="PRIMARY">
+    <column id="26" parent="11" name="age">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="27" parent="11" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
