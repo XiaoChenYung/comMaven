@@ -51,8 +51,8 @@ public class MainController {
 
         List<UserEntity> userList = userRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(userList);
-
+//        String json = mapper.writeValueAsString(userList);
+        String json = "123456";
         String mima = Des.encode("asdfaasfsdfqwfeasdfsd",json);
 
 //        System.out.println(json);
