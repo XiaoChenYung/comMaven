@@ -40,6 +40,7 @@ public class MainController {
     public String getUsers(ModelMap modelMap){
 
         List<UserEntity> userList = userRepository.findAll();
+//        List<UserEntity> userList = userRepository.findAll()
         modelMap.addAttribute("userList",userList);
         return "admin/users";
     }
