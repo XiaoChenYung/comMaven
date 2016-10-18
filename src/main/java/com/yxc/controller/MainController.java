@@ -10,6 +10,7 @@ import com.yxc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +22,8 @@ import java.text.ParseException;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import util.Des;
-
+import com.yxc.model.PageModel;
+import com.jsptags.navigation.pager.*;
 /**
  * Created by tm on 16/9/6.
  */
@@ -44,6 +46,37 @@ public class MainController {
         modelMap.addAttribute("userList",userList);
         return "admin/users";
     }
+
+//    public PageModel findAllAlarm(int offset, int pagesize) {
+//
+//        //得到总记录数
+//        String queryCountHql = "select count(*) from Alarm";
+//
+//        Query query = getSession().createQuery(queryCountHql);
+//        int total = ((Long)query.uniqueResult()).intValue();
+//            .setFirstResult(offset)
+//                .setMaxResults(pagesize)
+//                .list();
+//
+//        //得到结果集
+//        PageModel pm = new PageModel();
+//        pm.setTotal(total);
+//        pm.setDatas(datas);
+//        return pm;
+//
+//    }
+//        List datas = getSession().createQuery("from Alarm")
+//                .setFirstResult(offset)
+//                .setMaxResults(pagesize)
+//                .list();
+//
+//        //得到结果集
+//        PageModel pm = new PageModel();
+//        pm.setTotal(total);
+//        pm.setDatas(datas);
+//        return pm;
+//
+//    }
 
     @RequestMapping(value = "/admin/users",method = RequestMethod.POST)
     public void appGetUsers(HttpServletResponse response, @ModelAttribute("user") UserEntity userEntity)  throws ParseException, IOException {
