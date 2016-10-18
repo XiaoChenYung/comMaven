@@ -47,37 +47,6 @@ public class MainController {
         return "admin/users";
     }
 
-//    public PageModel findAllAlarm(int offset, int pagesize) {
-//
-//        //得到总记录数
-//        String queryCountHql = "select count(*) from Alarm";
-//
-//        Query query = getSession().createQuery(queryCountHql);
-//        int total = ((Long)query.uniqueResult()).intValue();
-//            .setFirstResult(offset)
-//                .setMaxResults(pagesize)
-//                .list();
-//
-//        //得到结果集
-//        PageModel pm = new PageModel();
-//        pm.setTotal(total);
-//        pm.setDatas(datas);
-//        return pm;
-//
-//    }
-//        List datas = getSession().createQuery("from Alarm")
-//                .setFirstResult(offset)
-//                .setMaxResults(pagesize)
-//                .list();
-//
-//        //得到结果集
-//        PageModel pm = new PageModel();
-//        pm.setTotal(total);
-//        pm.setDatas(datas);
-//        return pm;
-//
-//    }
-
     @RequestMapping(value = "/admin/users",method = RequestMethod.POST)
     public void appGetUsers(HttpServletResponse response, @ModelAttribute("user") UserEntity userEntity)  throws ParseException, IOException {
 
